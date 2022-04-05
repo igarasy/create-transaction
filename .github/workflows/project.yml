@@ -1,0 +1,54 @@
+name: Node CI
+
+<<<<<<< HEAD
+on: ['pull_request']
+=======
+on: ["pull_request"]
+>>>>>>> 89bc362b2281cb042dea34dabd4d9f5cb074600f
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+<<<<<<< HEAD
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          always-auth: true
+          registry-url: https://npm.pkg.github.com
+          scope: '@caju-beneficios'
+
+      - name: Install dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn
+
+      - name: Run lint of modified files
+        run: yarn lint:diff-ci
+=======
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+        always-auth: true
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run lint of modified files
+      run: npm run lint
+>>>>>>> 89bc362b2281cb042dea34dabd4d9f5cb074600f
+  commit-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+<<<<<<< HEAD
+      - uses: wagoid/commitlint-github-action@v3
+=======
+      - uses: wagoid/commitlint-github-action@v3
+>>>>>>> 89bc362b2281cb042dea34dabd4d9f5cb074600f
